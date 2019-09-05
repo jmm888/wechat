@@ -1,0 +1,1 @@
+hellow<b>{{$name}}</b> email
