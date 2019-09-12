@@ -7,7 +7,11 @@
     <meta name="Author" contect="http://www.webqin.net">
     <title>三级分销</title>
     <link rel="shortcut icon" href="/images/favicon.ico" />
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
     <!-- Bootstrap -->
     <link href="/css/shop/bootstrap.min.css" rel="stylesheet">
     <link href="/css/shop/style.css" rel="stylesheet">
@@ -28,8 +32,13 @@
       </div>
      </header>
      <div id="sliderA" class="slider">
+<<<<<<< HEAD
+      <img src="{{asset($data->goods_img)}}" />
+
+=======
       <img src="{{env('UPLOAD_URL')}}{{$data->goods_img}}" />
      
+>>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
      </div><!--sliderA/-->
      <table class="jia-len">
       <tr>
@@ -131,4 +140,8 @@
       }
     })
   })
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b

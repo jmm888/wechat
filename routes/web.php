@@ -174,10 +174,32 @@ Route::prefix('wz')->middleware('checklogin')->group(function(){
 
 
 //登录9.3微信小程序
+
+Route::any('wechat/event','wechat\EventController@event' );//接受微信发送过来的消息
+
 Route::any('wechat/login','wechat\WechatController@wechat_login' );
 Route::any('wechat/code','wechat\WechatController@code' );
 Route::any('wechat/upload','wechat\UploadController@upload' );
 Route::any('wechat/upload_do','wechat\UploadController@upload_do' );
+
+Route::any('wechat/tag_list','Tags\TagController@tag_list' );//公众号标签列表
+Route::any('wechat/tag_add','Tags\TagController@tag_add' );
+Route::any('wechat/tag_add_do','Tags\TagController@tag_add_do' );
+Route::any('wechat/tag_openid_list','Tags\TagController@tag_openid_list' );//标签下用户的openID列表
+Route::any('wechat/tag_openid','Tags\TagController@tag_openid' );//为用户打标签
+Route::any('wechat/uses_tag_list','Tags\TagController@uses_tag_list' );//用户下的标签列表
+Route::any('wechat/push_tag_message','Tags\TagController@push_tag_message' );//推送标签群发消息
+Route::any('wechat/do_push_tag_message','Tags\TagController@do_push_tag_message' );//执行推送标签群发消息
+Route::any('wechat/push_template_message','wechat\WechatController@push_template_message' );//发送模板消息
+
+
+
+Route::any('wechat/clear_api','wechat\WechatController@clear_api' );
+Route::any('wechat/get_access_token','wechat\WechatController@get_access_token');
+Route::any('wechat/get_user_list','wechat\WechatController@get_user_list');
+Route::any('wechat/get_wechat_access_token','wechat\WechatController@get_wechat_access_token');
+Route::any('wechat/add_msg/{openid}','wechat\WechatController@add_msg');
+
 
 
 
@@ -231,6 +253,7 @@ Route::any('wechat/get_access_token','wechat\WechatController@get_access_token')
 Route::any('wechat/get_user_list','wechat\WechatController@get_user_list');
 Route::any('wechat/get_wechat_access_token','wechat\WechatController@get_wechat_access_token');
 Route::any('wechat/add_msg/{openid}','wechat\WechatController@add_msg');
+
 
 
 
