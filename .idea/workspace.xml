@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dd335970-16e0-47b3-b8d3-bff9b60a4433" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/AgentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index/proinfo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index/proinfo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wechat/upload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wechat/upload.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +157,7 @@
       <workItem from="1568272292856" duration="5712000" />
       <workItem from="1568594128603" duration="13201000" />
       <workItem from="1568701808812" duration="426000" />
-      <workItem from="1568702423398" duration="2748000" />
+      <workItem from="1568702423398" duration="12803000" />
     </task>
     <servers />
   </component>

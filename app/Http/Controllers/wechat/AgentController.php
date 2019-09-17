@@ -43,6 +43,8 @@ class AgentController extends Controller
         DB::table('regist')->where(['user_id'=>$request->all()['uid']])->update([
             'qrcode_url'=>'/storage'.$path,
         ]);
+//        dd($path);
+
         return redirect('wechat/agent_list');
     }
 }
