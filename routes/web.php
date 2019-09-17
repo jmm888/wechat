@@ -201,6 +201,10 @@ Route::any('wechat/add_msg/{openid}','wechat\WechatController@add_msg');
 Route::any('zhouce/login','wechat\ZhouceController@wechat_login' );//登录
 Route::any('zhouce/code','wechat\ZhouceController@code' );//登录
 Route::any('zhouce/user_list','wechat\ZhouceController@user_list' );//登录
+//9.17微信二维码
+Route::get('wechat/agent_list','wechat\AgentController@agent_list');//用户列表
+Route::get('wechat/create_qrcode','wechat\AgentController@create_qrcode');//获取专属二维码
+
 
 
  //学生表8.21 练习

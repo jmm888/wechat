@@ -22,14 +22,5 @@
     <input type="file" name="images">
     <input type="submit" value="上传文件">
 </form>
-
-    <h3>文件上传</h3>
-{{--    访问图片路径--}}
-    <img src="{{asset('storage/Z57s42KR1LHv0RR2GYykvF9uKtI3QxZjxTdLGYeC.jpeg')}}" width="120" height="120"  alt="">
-    <form action="{{url('wechat/upload_do')}}" method="post" enctype="multipart/form-data">
-    @csrf
-    <input type="file" name="images">
-    <input type="submit" value="上传文件">
-    </form>
 </body>
 </html>

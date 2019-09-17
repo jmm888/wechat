@@ -28,9 +28,7 @@
       </div>
      </header>
      <div id="sliderA" class="slider">
-
       <img src="{{asset($data->goods_img)}}" />
-
      </div><!--sliderA/-->
      <table class="jia-len">
       <tr>
