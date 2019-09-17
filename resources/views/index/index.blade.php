@@ -32,11 +32,9 @@
      </ul><!--reg-login-click/-->
      <div id="sliderA" class="slider">
       @foreach ($is_slide as $v)
-<<<<<<< HEAD
+
       <img src="{{asset($v->goods_img)}}" />
-=======
-      <img src="{{env('UPLOAD_URL')}}{{$v->goods_img}}" />
->>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
+
       @endforeach
      </div><!--sliderA/-->
      <ul class="pronav">
@@ -49,11 +47,9 @@
      @foreach ($is_recommend as $v)
       <div class="index-pro1-list">
        <dl>
-<<<<<<< HEAD
+
         <dt><a href="{{url('index/proinfo/'.$v->goods_id)}}"><img src="{{asset($v->goods_img)}}"/></a></dt>
-=======
-        <dt><a href="{{url('index/proinfo/'.$v->goods_id)}}"><img src="{{env('UPLOAD_URL')}}{{$v->goods_img}}" /></a></dt>
->>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
+
         <dd class="ip-text"><a href="proinfo.html">{{$v->goods_name}}</a><span>已售：488</span></dd>
         <dd class="ip-price"><strong>¥{{$v->goods_price}}</strong> <span>¥599</span></dd>
        </dl>
@@ -92,11 +88,6 @@
      </div><!--prolist/-->
      <div class="joins"><a href="fenxiao.html"><img src="/images/jrwm.jpg" /></a></div>
      <div class="copyright">Copyright &copy; <span class="blue">这是就是三级分销底部信息</span></div>
-<<<<<<< HEAD
-
-=======
-     
->>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
      <div class="height1"></div>
      <div class="footNav">
       <dl>

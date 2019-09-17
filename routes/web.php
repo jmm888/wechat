@@ -191,19 +191,16 @@ Route::any('wechat/uses_tag_list','Tags\TagController@uses_tag_list' );//用户�
 Route::any('wechat/push_tag_message','Tags\TagController@push_tag_message' );//推送标签群发消息
 Route::any('wechat/do_push_tag_message','Tags\TagController@do_push_tag_message' );//执行推送标签群发消息
 Route::any('wechat/push_template_message','wechat\WechatController@push_template_message' );//发送模板消息
-
-
-
 Route::any('wechat/clear_api','wechat\WechatController@clear_api' );
 Route::any('wechat/get_access_token','wechat\WechatController@get_access_token');
 Route::any('wechat/get_user_list','wechat\WechatController@get_user_list');
 Route::any('wechat/get_wechat_access_token','wechat\WechatController@get_wechat_access_token');
 Route::any('wechat/add_msg/{openid}','wechat\WechatController@add_msg');
 
-
-
-
-
+//9.16周测
+Route::any('zhouce/login','wechat\ZhouceController@wechat_login' );//登录
+Route::any('zhouce/code','wechat\ZhouceController@code' );//登录
+Route::any('zhouce/user_list','wechat\ZhouceController@user_list' );//登录
 
 
  //学生表8.21 练习

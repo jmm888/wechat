@@ -15,6 +15,5 @@
     <h4>头像:<img src="{{$info['headimgurl']}}" alt=""> </h4>
     <h4>城市:{{$info['country']}}{{$info['province']}}{{$info['city']}}</h4>
     <h4>关注时间:{{date("Y-m-d H:i:s",$info['subscribe_time'])}}</h4>
-    
 </body>
 </html>

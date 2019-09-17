@@ -4,20 +4,16 @@ namespace App\Http\Controllers\wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Redis;
 use GuzzleHttp\Client;
 use DB;
-=======
->>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
-
 class UploadController extends Controller
 {
    public function upload()
    {
        return view('wechat.upload');
    }
-<<<<<<< HEAD
+
 
     /*
      * 微信 素材管理页面
@@ -142,17 +138,5 @@ class UploadController extends Controller
         curl_close($curl);
         return $data;
     }
-    //
-=======
-   public function upload_do(Request $request)
-   {
-       $images=request()->file('images');
-       // dd($images);
-       $name='images';
-       if(request()->hasFile($name) && request()->file($name)->isValid()){
-           $photo = request()->file($name)->store('');
-           dd($photo);
-       }
-   }
->>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
+
 }

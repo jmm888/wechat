@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
 <h3>文件上传</h3>
 {{--    访问图片路径--}}
 <img src="{{asset('storage/Z57s42KR1LHv0RR2GYykvF9uKtI3QxZjxTdLGYeC.jpeg')}}" width="120" height="120"  alt="">
@@ -23,7 +22,7 @@
     <input type="file" name="images">
     <input type="submit" value="上传文件">
 </form>
-=======
+
     <h3>文件上传</h3>
 {{--    访问图片路径--}}
     <img src="{{asset('storage/Z57s42KR1LHv0RR2GYykvF9uKtI3QxZjxTdLGYeC.jpeg')}}" width="120" height="120"  alt="">
@@ -32,6 +31,5 @@
     <input type="file" name="images">
     <input type="submit" value="上传文件">
     </form>
->>>>>>> 539f86e8a73a64a60aab5e7555e60e2a4a66aa8b
 </body>
 </html>

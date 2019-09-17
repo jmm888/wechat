@@ -17,7 +17,7 @@
     <script>
         $(function(){
             $('.stu').click(function(){
-                window.location.href="{{url('wechat/login')}}";
+                window.location.href="{{url('zhouce/login')}}";
             })
         })
     </script>
