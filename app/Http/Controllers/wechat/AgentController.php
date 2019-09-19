@@ -30,7 +30,7 @@ class AgentController extends Controller
         $url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token='.$this->tools->get_wechat_access_token();
         $data = [
             'expire_seconds'=>2592000,
-            'action_name'=>'QR_STR_SCENE',
+            'action_name'=>'QR_SCENE',
             'action_info'=>[
                 'scene_id'=>$request->all()['uid']
             ]

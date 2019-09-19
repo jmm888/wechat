@@ -22,7 +22,6 @@ class EventController extends Controller
         file_put_contents($wechat_log_path,"--------------------------\n",FILE_APPEND);
         file_put_contents($wechat_log_path,$xml_string,FILE_APPEND);
         file_put_contents($wechat_log_path,"\n--------------------------\n\n",FILE_APPEND);
-        $xml_obj=simplexml_load_string($xml_string);
         $xml_obj=simplexml_load_string($xml_string,'SimpleXMLElement',LIBXML_NOCDATA);
 //        dd($xml_obj);
         $xml_arr=(array)$xml_obj;
@@ -32,11 +31,6 @@ class EventController extends Controller
 //        echo $_GET['echostr'];
         //dd($xml_arr);
         //业务逻辑
-        if($xml_arr['MsgType'] == 'event'){
-//            dd($xml_arr['EventKey']);
-            $share_code = explode('_',$xml_arr['EventKey'])[1];
-//            dd($share_code);
-            DB::table('regist')->where(['user_id'=>$share_code])->increment('share_num',1);
-        }
+
     }
 }
