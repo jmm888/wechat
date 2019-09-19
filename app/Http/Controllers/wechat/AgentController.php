@@ -29,12 +29,15 @@ class AgentController extends Controller
     {
         $url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token='.$this->tools->get_wechat_access_token();
         $data = [
-            'expire_seconds'=>2592000,
+            'expire_seconds'=>30 * 24 * 3600,
             'action_name'=>'QR_SCENE',
             'action_info'=>[
-                'scene_id'=>$request->all()['uid']
+                'scene'=>[
+                    'scene_id'=>$request->all()['uid']
+                ]
             ]
         ];
+//        dd($data);
         $re = $this->tools->curl_post($url,json_encode($data));
         $result = json_decode($re,1);
         $qrcode_info = file_get_contents('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='.UrlEncode($result['ticket']));
