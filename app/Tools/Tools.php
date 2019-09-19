@@ -48,4 +48,27 @@ class Tools
             return  $re['access_token'];
         }
     }
+    /*
+     * 获取jsapi_ticket
+     * */
+    public function get_wechat_jsapi_ticket()
+    {
+        //加入缓存
+        $access_api_key='wechat_jsapi_ticket';
+        // Redis::del($access_token_key);die;
+        $info = $this->redis->get($access_api_key);
+        //dd($info);
+        if($info){
+            return $info;
+        }else{
+            $appid = env('WECHAT_APPID');
+            $secret = env('WECHAT_APPSECRET');
+            $result = file_get_contents('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='.$this->get_wechat_access_token().'&type=jsapi');
+            //dd($result);
+            // 转化数组   1==true
+            $re = json_decode($result,1);
+            $this->redis->set($access_api_key,7200,$re['ticket']);//加入缓存
+            return  $re['ticket'];
+        }
+    }
 }

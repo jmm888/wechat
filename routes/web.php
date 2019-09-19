@@ -204,7 +204,12 @@ Route::any('zhouce/user_list','wechat\ZhouceController@user_list' );//登录
 //9.17微信二维码
 Route::get('wechat/agent_list','wechat\AgentController@agent_list');//用户列表
 Route::get('wechat/create_qrcode','wechat\AgentController@create_qrcode');//获取专属二维码
-
+//9.18 自定义菜单
+Route::post('wechat/menu_create','wechat\MenuController@menu_create');//创建菜单
+Route::get('wechat/menu_list','wechat\MenuController@menu_list');//菜单列表
+Route::get('wechat/load_menu','wechat\MenuController@load_menu');//根据数据库表数据 刷新菜单
+//9.19JSSDK使用步骤
+Route::get('wechat/location','wechat\WechatController@location');
 
 
  //学生表8.21 练习

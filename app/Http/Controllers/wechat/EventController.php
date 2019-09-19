@@ -34,7 +34,7 @@ class EventController extends Controller
         //业务逻辑
         if($xml_arr['MsgType'] == 'event'){
 //            dd($xml_arr['EventKey']);
-            $share_code = explode('_',$xml_arr['EventKey'])[0];
+            $share_code = explode('_',$xml_arr['EventKey'])[1];
 //            dd($share_code);
             DB::table('regist')->where(['user_id'=>$share_code])->increment('share_num',1);
         }

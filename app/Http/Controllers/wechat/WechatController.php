@@ -23,6 +23,21 @@ class WechatController extends Controller
         $data = ['appid'=>env('WECHAT_APPID')];
         $this->tools->curl_post($url,json_encode($data));
     }
+    /*
+     * JSSDK使用步骤
+     * */
+    public function location()
+    {
+        $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $jsapi_ticket= $this->tools->get_wechat_jsapi_ticket();
+        //dd($req);
+        $timestamp=time();
+        $nonceStr =rand(1000,9999).'suibian';
+       $sign_str='jsapi_ticket='.$jsapi_ticket.'&nonceStr='.$nonceStr.'&$timestamp='.$timestamp.'&url='.$url;
+       $signature =sha1($sign_str);
+       //echo $signature;
+        return view('wechat/location',['nonceStr'=>$nonceStr,'timestamp'=>$timestamp,'signature'=>$signature]);
+    }
 
     /*
     *发送模板消息
