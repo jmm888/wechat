@@ -200,7 +200,10 @@ Route::any('wechat/add_msg/{openid}','wechat\WechatController@add_msg');
 //9.16周测
 Route::any('zhouce/login','wechat\ZhouceController@wechat_login' );//登录
 Route::any('zhouce/code','wechat\ZhouceController@code' );//登录
-Route::any('zhouce/user_list','wechat\ZhouceController@user_list' );//登录
+Route::any('zhouce/user_list','wechat\ZhouceController@user_list' );//留言用户列表
+Route::any('zhouce/message','wechat\ZhouceController@message' );//留言用户列表
+Route::any('zhouce/message_do','wechat\ZhouceController@messaged_do' );//留言用户列表
+
 //9.17微信二维码
 Route::get('wechat/agent_list','wechat\AgentController@agent_list');//用户列表
 Route::get('wechat/create_qrcode','wechat\AgentController@create_qrcode');//获取专属二维码
@@ -210,7 +213,14 @@ Route::get('wechat/menu_list','wechat\MenuController@menu_list');//菜单列表
 Route::get('wechat/load_menu','wechat\MenuController@load_menu');//根据数据库表数据 刷新菜单
 //9.19JSSDK使用步骤
 Route::get('wechat/location','wechat\WechatController@location');
-
+//9.23练习题 授权登录 标签管理
+Route::get('wechat/cront_login','wechat\CrontController@cront_login_do');//登录
+Route::get('wechat/cront_code','wechat\CrontController@cront_code');//获取code
+Route::get('wechat/cron_list','wechat\CrontController@cron_list');//标签管理列表
+Route::get('wechat/user_list','wechat\CrontController@user_list');//粉丝列表
+Route::get('wechat/cront_add','wechat\CrontController@cront_add');//添加标签
+Route::post('wechat/add_do','wechat\CrontController@add_do');//添加标签执行页面
+Route::any('wechat/cron_openid','wechat\CrontController@cron_openid');//批量为用户打标签
 
  //学生表8.21 练习
  Route::get('stud/add','stud\StudController@add');

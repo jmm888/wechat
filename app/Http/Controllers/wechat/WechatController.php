@@ -73,7 +73,12 @@ class WechatController extends Controller
     //用户信息页
     public function get_user_list(Request $request)
     {
+//        //使用Easywechat获取用户列表
+//        $app = app('wechat.official_account');
+//        dd($app->user->list($nextOpenId = null));  // $nextOpenId 可选
+//        dd();
         $req = $request->all();
+        //dd($req);
         $url = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$this->tools->get_wechat_access_token()."&next_openid=";
         $result = file_get_contents($url);
         $re = json_decode($result,1);
@@ -85,8 +90,8 @@ class WechatController extends Controller
             // dd($user);
             $last_info[$k]['nickname'] = $user['nickname'];
             $last_info[$k]['openid'] = $v;
-            return view('wechat.userList',['info'=>$last_info,'tagid'=>isset($req['tagid'])?$req['tagid']:'']);
         }
+        return view('wechat.userList',['info'=>$last_info,'tagid'=>isset($req['tagid'])?$req['tagid']:'']);
   }
     public function get_access_token()
     {
@@ -154,7 +159,7 @@ class WechatController extends Controller
     /*
     * 获取access_token
     * */
-    public function get_wechat_access_token()
+        public function get_wechat_access_token()
     {
         //加入缓存
         $access_token_key='wechat_access_token';

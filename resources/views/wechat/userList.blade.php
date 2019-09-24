@@ -8,6 +8,7 @@
 </head>
 <body>
 <center>
+    <h3>粉丝列表</h3>
     <form action="{{url('wechat/tag_openid')}}" method="post">
         @csrf
         <input type="submit" value="提交">
@@ -21,7 +22,6 @@
             </tr>
             @foreach ($info as $k=>$v)
                 <tr>
-
                     <input type="hidden" value="{{$tagid}}" name="tagid">
                     <td><input type="checkbox" name="openid_list[]" value="{{$v['openid']}}"></td>
                     <td>{{$k}}</td>

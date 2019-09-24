@@ -44,6 +44,7 @@ class Tools
             //dd($result);
             // 转化数组   1==true
             $re = json_decode($result,1);
+            //dd($re);
             $this->redis->set($access_token_key,7200,$re['access_token']);//加入缓存
             return  $re['access_token'];
         }

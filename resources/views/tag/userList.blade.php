@@ -9,21 +9,20 @@
 </head>
 <body>
 <center>
-    <h3>周测登录</h3>
+<h2>标签下粉丝列表</h2>
     <form action="">
-        @csrf
-        用户名：<input type="text"><br />
-        密码：<input type="password"><br />
-        <input type="submit" value="提交" class=""stu>
+        <table border="1">
+            <tr>
+                <th>OPENID</th>
+            </tr>
+            @foreach ($info as $k=>$v)
+            <tr>
+                <td>{{$v}}</td>
+            </tr>
+            @endforeach
+        </table>
     </form>
 </center>
+
 </body>
 </html>
-<script src="/js/app.js"></script>
-<script>
-    $(function(){
-        $('.stu').click(function(){
-            window.location.href="{{url('wechat/login')}}";
-        })
-    })
-</script>

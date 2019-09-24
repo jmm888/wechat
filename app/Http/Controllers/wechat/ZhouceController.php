@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\wechat;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -10,6 +11,13 @@ use Illuminate\Support\Facades\Redis;
 
 class ZhouceController extends Controller
 {
+    public $tools;
+    public $client;
+    public function __construct(Tools $tools,Client $client)
+    {
+        $this->tools = $tools;
+        $this->client = $client;
+    }
    public function login()
     {
         return view('zhouce/login');
@@ -57,31 +65,32 @@ class ZhouceController extends Controller
     //微信 留言主页
     public function user_list()
     {
-//        dd(111);
-        $url = file_get_contents('https://api.weixin.qq.com/cgi-bin/user/get?access_token='.$this->get_wechat_access_token().'&next_openid=');
-      dd($url);
-
-        return view('zhouce/user_list');
-    }
-    /*
-   * 获取access_token
-   * */
-    public function get_wechat_access_token()
-    {
-        //加入缓存
-        $access_token_key='wechat_access_token';
-        // Redis::del($access_token_key);die;
-        $info = Redis::get($access_token_key);
-        if($info){
-            return $info;
-        }else{
-            $appid = env('WECHAT_APPID');
-            $secret = env('WECHAT_APPSECRET');
-            $result = file_get_contents("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$secret");
-            // 转化数组   1==true
-            $re = json_decode($result,1);
-            Redis::set($access_token_key,7200,$re['access_token']);//加入缓存
-            return  $re['access_token'];
+        //dd(111);
+        $url = file_get_contents('https://api.weixin.qq.com/cgi-bin/user/get?access_token='.$this->tools->get_wechat_access_token().'&next_openid=');
+        $re = json_decode($url,1);
+        $lase_info = [];
+        foreach($re['data']['openid'] as $k=>$v){
+            $user_info=file_get_contents("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$this->tools->get_wechat_access_token()."&openid=".$v."&lang=zh_CN");
+            $user = json_decode($user_info,1);
+            //dd($user);
+            $lase_info[$k]['nickname'] = $user['nickname'];
+            $lase_info[$k]['openid'] = $v;
         }
+        $lase_info = json_encode($lase_info);
+        $lase_info = json_decode($lase_info);
+        return view('zhouce/user_list',['info'=>$lase_info]);
+    }
+    //执行 留言列表
+    public function message(Request $request)
+    {
+        $req = $request->all()['openid'];
+        //dd($req);
+        return view('zhouce.message',['openid'=>$req]);
+    }
+    //添加留言执行页面
+    public function message_do(Request $request)
+    {
+        $req = $request->all();
+        dd($req);
     }
 }

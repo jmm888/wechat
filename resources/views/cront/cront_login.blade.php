@@ -9,7 +9,7 @@
 </head>
 <body>
 <center>
-    <h3>周测登录</h3>
+    <h3>登录</h3>
     <form action="">
         @csrf
         用户名：<input type="text"><br />
@@ -23,7 +23,7 @@
 <script>
     $(function(){
         $('.stu').click(function(){
-            window.location.href="{{url('wechat/login')}}";
+            window.location.href = "{{url('wechat/login')}}";
         })
     })
 </script>

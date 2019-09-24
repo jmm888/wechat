@@ -124,6 +124,8 @@ class TagController extends Controller
         ];
         $re = $this->tools->curl_post($url,json_encode($data));
         $result = json_decode($re,1);
-        dd($result);
+       //dd($result);
+        //dd($result['data']['openid']);
+        return view('tag.userList',['info'=>$result['data']['openid']]);
     }
 }

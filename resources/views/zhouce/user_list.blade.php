@@ -8,6 +8,24 @@
     <title>Document</title>
 </head>
 <body>
+<center>
     <h2>留言</h2>
+    <form action="{{url('zhouce/message')}}" method="post">
+        @csrf
+    <table border="1">
+        <input type="submit" value="提交">
+        <tr>
+            <th>请勾选要留言的用户名</th>
+            <th>OPENID</th>
+        </tr>
+        @foreach ($info as $k=>$v)
+        <tr>
+            <td><input type="checkbox" value="{{$v->openid}}" name="openid">{{$v->nickname}}</td>
+            <td>{{$v->openid}}</td>
+        </tr>
+        @endforeach
+    </table>
+    </form>
+</center>
 </body>
 </html>
