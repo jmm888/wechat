@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd335970-16e0-47b3-b8d3-bff9b60a4433" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/CrontController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cront/cron_list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cront/cront_add.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cront/user_list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/tag/userList.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/zhouce/message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/wxlaravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wxlaravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Tags/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Tags/TagController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/WechatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/WechatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/ZhouceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/ZhouceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tools/Tools.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tools/Tools.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wechat/userList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wechat/userList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/zhouce/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/zhouce/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/zhouce/user_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/zhouce/user_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +185,8 @@
       <workItem from="1568854455516" duration="13191000" />
       <workItem from="1568941417041" duration="13267000" />
       <workItem from="1569202853480" duration="20792000" />
-      <workItem from="1569285522902" duration="12376000" />
+      <workItem from="1569285522902" duration="13032000" />
+      <workItem from="1569371766596" duration="4174000" />
     </task>
     <servers />
   </component>
