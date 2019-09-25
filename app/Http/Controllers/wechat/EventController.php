@@ -36,27 +36,27 @@ class EventController extends Controller
 //        echo $_GET['echostr'];
         //业务逻辑
         //签到逻辑
-        if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='CLICK'){
-            if($xml_arr['EventKey']=='sign'){
-                //签到
-                $today = date("Y-m-d",time());//当天日期
-                $openid_info = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
-                if($openid_info->sign_day == $today){
-                    //已签到
-                    $message='您已签到';
-                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
-                    echo $xml_str;
-                }else{
-                    //未签到
-                    $message='您未签到';
-                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
-                    echo $xml_str;
-                }
-            }
-//            if($xml_arr['EventKey']=='score'){
-//                //查积分
+//        if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='CLICK'){
+//            if($xml_arr['EventKey']=='sign'){
+//                //签到
+//                $today = date("Y-m-d",time());//当天日期
+//                $openid_info = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
+//                if($openid_info->sign_day == $today){
+//                    //已签到
+//                    $message='您已签到';
+//                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+//                    echo $xml_str;
+//                }else{
+//                    //未签到
+//                    $message='您未签到';
+//                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+//                    echo $xml_str;
+//                }
 //            }
-        }
+////            if($xml_arr['EventKey']=='score'){
+////                //查积分
+////            }
+//        }
 //        dd($xml_arr);
         /*if($xml_arr['MsgType']=='event'){
             if($xml_arr['Event']=='subscribe'){
@@ -88,11 +88,13 @@ class EventController extends Controller
             //存入数据库
             $db_user = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
             //dd($db_user);
+            $time=date("Y-m-d",time());
             if(empty($db_user)){
                 //没有数据，存入数据库
                 DB::table('wechat_openid')->insert([
                    'openid'=>$xml_arr['FromUserName'],
-                    'add_time'=>date("Y-m-d",time()),
+                    'add_time'=>time(),
+                    'sign_day'=>$time,
                 ]);
             }
             $message='欢迎'.$user_info['nickname'].'同学，感谢您的关注';
