@@ -63,7 +63,7 @@ class EventController extends Controller
             $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->tools->get_wechat_access_token().'&openid='.$xml_arr['FromUserName'].'&lang=zh_CN';
             $re = file_get_contents($url);
             $user_info = json_decode($re,1);
-//          dd($user_info);
+          //dd($user_info);
             //存入数据库
             $db_user = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
             if(empty($db_user)){
@@ -77,6 +77,5 @@ class EventController extends Controller
             $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
             echo $xml_str;
         }
-
     }
 }
