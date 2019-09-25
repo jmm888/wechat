@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\wechat;
 
 use App\Tools\Tools;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -11,11 +10,9 @@ use DB;
 class EventController extends Controller
 {
     public $tools;
-    public $client;
-    public function __construct(Tools $tools,Client $client)
+    public function __construct(Tools $tools)
     {
         $this->tools = $tools;
-        $this->client = $client;
     }
     //接受微信发过来的消息（用户互动）
     public function event()
