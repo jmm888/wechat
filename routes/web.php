@@ -211,6 +211,8 @@ Route::get('wechat/create_qrcode','wechat\AgentController@create_qrcode');//获�
 Route::post('wechat/menu_create','wechat\MenuController@menu_create');//创建菜单
 Route::get('wechat/menu_list','wechat\MenuController@menu_list');//菜单列表
 Route::get('wechat/load_menu','wechat\MenuController@load_menu');//根据数据库表数据 刷新菜单
+Route::get('wechat/menu_del','wechat\MenuController@menu_del');//删除菜单
+
 //9.19JSSDK使用步骤
 Route::get('wechat/location','wechat\WechatController@location');
 //9.23练习题 授权登录 标签管理

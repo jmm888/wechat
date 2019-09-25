@@ -37,7 +37,7 @@
             <td>{{$v->name2}}</td>
             <td>@if($v->type==1)click @else view @endif</td>
             <td>{{$v->event_value}}</td>
-            <td><a href="">删除</a> </td>
+            <td><a href="{{url('wechat/menu_del')}}?id={{$v->id}}">删除</a> </td>
         </tr>
             @endforeach
     </table>

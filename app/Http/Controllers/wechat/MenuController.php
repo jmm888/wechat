@@ -16,6 +16,13 @@ class MenuController extends Controller
         $this->tools = $tools;
         $this->client = $client;
     }
+    //删除菜单
+    public function menu_del(Request $request)
+    {
+        $id = $request->id;
+        $res = DB::table('menu')->delete($id);
+        $this->load_menu();
+    }
     //菜单列表
     public function menu_list()
     {
