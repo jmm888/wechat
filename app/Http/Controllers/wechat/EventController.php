@@ -53,9 +53,9 @@ class EventController extends Controller
                     echo $xml_str;
                 }
             }
-            if($xml_arr['EventKey']=='score'){
-                //查积分
-            }
+//            if($xml_arr['EventKey']=='score'){
+//                //查积分
+//            }
         }
 //        dd($xml_arr);
         /*if($xml_arr['MsgType']=='event'){
@@ -93,7 +93,7 @@ class EventController extends Controller
                 //没有数据，存入数据库
                 DB::table('wechat_openid')->insert([
                    'openid'=>$xml_arr['FromUserName'],
-                    'add_time'=>time(),
+                    'add_time'=>date("Y-m-d",time()),
                 ]);
             }
             $message='欢迎'.$user_info['nickname'].'同学，感谢您的关注';
