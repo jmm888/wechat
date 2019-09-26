@@ -159,7 +159,8 @@ Route::prefix('wz')->middleware('checklogin')->group(function(){
  //前台 模板
  Route::get('/','index\IndexController@index')->name('index');
  Route::get('index/login','index\LoginController@index');
- Route::get('index/reg','index\LoginController@reg')->name('reg');
+Route::any('index/push','index\LoginController@push');//活动提醒
+Route::get('index/reg','index\LoginController@reg')->name('reg');
  Route::any('index/email','index\LoginController@email')->name('email');
  Route::any('index/reg_do','index\LoginController@reg_do')->name('reg_do');
  Route::any('index/login_do','index\LoginController@login_do')->name('login_do');

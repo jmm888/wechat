@@ -42,6 +42,14 @@ class EventController extends Controller
                 $today = date("Y-m-d",time());//当天日期
                 $last_day = date('Y-m-d',strtotime('-1 days'));//昨天日期
                 $openid_info = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
+                if(empty($openid_info)){
+                    //没有数据，存入
+                    DB::table("wechat_openid")->insert([
+                        'openid'=>$xml_arr['FromUserName'],
+                        'add_time'=>time()
+                    ]);
+                }
+                $openid_info = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
                 if($openid_info->sign_day == $today){
                     //已签到
                     $message='您已签到';
