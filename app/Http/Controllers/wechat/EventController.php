@@ -80,6 +80,20 @@ class EventController extends Controller
             }
             if($xml_arr['EventKey']=='score'){
                 //查积分
+                $openid_info = DB::table("wechat_openid")->where(['openid'=>$xml_arr['FromUserName']])->first();
+                if(empty($openid_info)){
+                    DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->insert([
+                        'openid'=>$xml_arr['FromUserName'],
+                        'add_time'=>time()
+                    ]);
+                    $message='积分：0';
+                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+                    echo $xml_str;
+                }else{
+                    $message='积分:'.$openid_info->score;
+                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+                    echo $xml_str;
+                }
             }
         }
         /*if($xml_arr['MsgType']=='event'){
