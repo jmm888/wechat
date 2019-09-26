@@ -38,8 +38,10 @@ class Tools
         if($info){
             return $info;
         }else{
-            $appid = env('WECHAT_APPID');
-            $secret = env('WECHAT_APPSECRET');
+            //$appid = env('WECHAT_APPID');
+            $appid = 'wxdb1e7178bb7c4c75';
+            $secret ='77a62cd6410c7962b7bdd3cf3c6340eb';
+            //$secret = env('WECHAT_APPSECRET');
             $result = file_get_contents("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$secret");
             //dd($result);
             // 转化数组   1==true
