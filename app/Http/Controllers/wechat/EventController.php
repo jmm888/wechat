@@ -36,28 +36,52 @@ class EventController extends Controller
 //        echo $_GET['echostr'];
         //业务逻辑
         //签到逻辑
-//        if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='CLICK'){
-//            if($xml_arr['EventKey']=='sign'){
-//                //签到
-//                $today = date("Y-m-d",time());//当天日期
-//                $openid_info = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
-//                if($openid_info->sign_day == $today){
-//                    //已签到
-//                    $message='您已签到';
-//                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
-//                    echo $xml_str;
-//                }else{
-//                    //未签到
-//                    $message='您未签到';
-//                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
-//                    echo $xml_str;
-//                }
-//            }
-////            if($xml_arr['EventKey']=='score'){
-////                //查积分
-////            }
-//        }
-//        dd($xml_arr);
+        if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='CLICK'){
+            if($xml_arr['EventKey']=='sign'){
+                //签到
+                $today = date("Y-m-d",time());//当天日期
+                $last_day = date('Y-m-d',strtotime('-1 days'));//昨天日期
+                $openid_info = DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->first();
+                if($openid_info->sign_day == $today){
+                    //已签到
+                    $message='您已签到';
+                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+                    echo $xml_str;
+                }else{
+                    //未签到 积分
+                    if($last_day == $openid_info->sign_day){
+                        //连续签到 五天一轮
+                        if($openid_info->sign_days >= 5){
+                            DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->update([
+                                'sign_days'=>1,
+                                'score'=>$openid_info->score + 5,
+                                'sign_day'=>$today,
+                            ]);
+                        }else{
+                            DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->update([
+                                'sign_days'=>$openid_info->sign_days + 1,
+                                'score'=>$openid_info->score + 5 * ($openid_info->sign_days + 1),
+                                'sign_day'=>$today,
+                            ]);
+                        }
+                    }else{
+                        //非连续签到
+                        // 加积分 连续天数变一
+                        DB::table('wechat_openid')->where(['openid'=>$xml_arr['FromUserName']])->update([
+                           'sign_days'=>1,
+                            'score'=>$openid_info->score + 5,
+                            'sign_day'=>$today,
+                        ]);
+                    }
+                    $message='签到成功';
+                    $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+                    echo $xml_str;
+                }
+            }
+            if($xml_arr['EventKey']=='score'){
+                //查积分
+            }
+        }
         /*if($xml_arr['MsgType']=='event'){
             if($xml_arr['Event']=='subscribe'){
                 $share_code=explode('_',$xml_arr['EventKey'])[1];
