@@ -123,7 +123,7 @@ class EventController extends Controller
                 echo $xml_str;
             }
         }*/
-        dd($xml_arr);
+        //dd($xml_arr);
         //关注逻辑
         if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='subscribe'){
             //关注
