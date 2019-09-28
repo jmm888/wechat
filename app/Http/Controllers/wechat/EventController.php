@@ -123,7 +123,23 @@ class EventController extends Controller
                 echo $xml_str;
             }
         }*/
-//        dd($xml_arr);
+        //dd($xml_arr);
+        //事件入库
+        if($xml_arr['MsgType']=='text'){
+            //入库
+            DB::table('wx_msg')->insert([
+                'openid'=>$xml_arr['FromUserName'],
+                'we_desc'=>$xml_arr['Content'],
+                'msg_id'=>$xml_arr['MsgId'],
+                'add_time'=>$xml_arr['CreateTime'],
+            ]);
+            $user = DB::table('wx_msg')->where(['openid'=>$xml_arr['FromUserName']])->first();
+            $times = date('Y-m-d',time());
+            $message='时间为'.$times.'内容为'.$user->we_desc;
+            $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+            echo $xml_str;
+
+        }
         //CLICK事件发送消息
         if($xml_arr['MsgType']=='event' && $xml_arr['Event'] == 'CLICK'){
             //openid拿到用户基本信息
