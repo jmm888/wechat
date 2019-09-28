@@ -32,7 +32,7 @@ class EventController extends Controller
 //        dd($xml_obj);
         $xml_arr=(array)$xml_obj;
 //        dd($xml_arr);
-       // \Log::Info(json_encode($xml_arr,JSON_UNESCAPED_UNICODE));
+        \Log::Info(json_encode($xml_arr,JSON_UNESCAPED_UNICODE));
 //        echo $_GET['echostr'];
         //业务逻辑
         //签到逻辑
