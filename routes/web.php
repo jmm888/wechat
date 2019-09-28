@@ -224,7 +224,8 @@ Route::get('wechat/user_list','wechat\CrontController@user_list');//粉丝列表
 Route::get('wechat/cront_add','wechat\CrontController@cront_add');//添加标签
 Route::post('wechat/add_do','wechat\CrontController@add_do');//添加标签执行页面
 Route::any('wechat/cron_openid','wechat\CrontController@cron_openid');//批量为用户打标签
-
+Route::any('wechat/quefa','wechat\CrontController@quefa');//通过标签群发消息
+Route::any('wechat/quefa_do','wechat\CrontController@quefa_do');//通过标签群发消息
  //学生表8.21 练习
  Route::get('stud/add','stud\StudController@add');
  Route::any('stud/add_do','stud\StudController@add_do')->name('add_do');

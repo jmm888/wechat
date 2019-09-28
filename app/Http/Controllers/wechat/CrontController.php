@@ -112,15 +112,40 @@ class CrontController extends Controller
     public function cron_openid()
     {
         $req = Request()->all();
-       // dd($req);
+        //dd($req);
         $url = 'https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token='.$this->tools->get_wechat_access_token();
         $data = [
-            'cront_list' =>[$req['cront_list']],
+            'openid_list' =>$req['cront_list'],
             'tagid'=>$req['tagid'],
         ];
-        //dd($data);
+       // dd($data);
         $re = $this->tools->curl_post($url,json_encode($data));
-//        dd($re);
+//    dd($re);
+        $result = json_decode($re,1);
+        dd($result);
+    }
+    //通过标签群发消息
+    public function quefa()
+    {
+        return view('cront.quefa',['tagid'=>Request()->all()['tagid']]);
+    }
+    public function quefa_do()
+    {
+        $req = Request()->all();
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token='.$this->tools->get_wechat_access_token();
+        $data = [
+            'filter'=>[
+                'is_to_all'=>false,
+                'tag_id'=>$req['tagid'],
+            ],
+            'text'=>[
+                'content'=>$req['message'],
+            ],
+            'msgtype'=>'text',
+        ];
+        $re = $this->tools->curl_post($url,json_encode($data,JSON_UNESCAPED_UNICODE));
+        //存redis
+        $this->tools->redis->set('name',json_encode($data));
         $result = json_decode($re,1);
         dd($result);
     }

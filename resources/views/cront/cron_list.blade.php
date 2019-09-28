@@ -26,7 +26,7 @@
                     <td>{{$v['name']}}</td>
                     <td>{{$v['count']}}</td>
                     <td>
-                        <a href="">通过标签 给用户群发消息</a>||
+                        <a href="{{url('wechat/quefa')}}?tagid={{$v['id']}}">通过标签 给用户群发消息</a>||
                         <a href="{{url('wechat/user_list')}}?tagid={{$v['id']}}">给用户打标签</a>
                     </td>
                 </tr>
