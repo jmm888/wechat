@@ -36,7 +36,7 @@ class EventController extends Controller
 //        echo $_GET['echostr'];
         //业务逻辑
         //签到逻辑
-        if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='CLICK'){
+        /*if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='CLICK'){
             if($xml_arr['EventKey']=='sign'){
                 //签到
                 $today = date("Y-m-d",time());//当天日期
@@ -103,7 +103,7 @@ class EventController extends Controller
                     echo $xml_str;
                 }
             }
-        }
+        }*/
         /*if($xml_arr['MsgType']=='event'){
             if($xml_arr['Event']=='subscribe'){
                 $share_code=explode('_',$xml_arr['EventKey'])[1];
@@ -123,7 +123,7 @@ class EventController extends Controller
                 echo $xml_str;
             }
         }*/
-        //dd($xml_arr);
+        dd($xml_arr);
         //关注逻辑
         if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='subscribe'){
             //关注

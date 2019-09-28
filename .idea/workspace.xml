@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd335970-16e0-47b3-b8d3-bff9b60a4433" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/cront/quefa.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/CrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/CrontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cront/cron_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cront/cron_list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/menu/menulist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu/menulist.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +189,7 @@
       <workItem from="1569285522902" duration="13032000" />
       <workItem from="1569371766596" duration="26156000" />
       <workItem from="1569457640448" duration="21969000" />
-      <workItem from="1569630610653" duration="1927000" />
+      <workItem from="1569630610653" duration="2443000" />
     </task>
     <servers />
   </component>
