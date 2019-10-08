@@ -124,6 +124,15 @@ class EventController extends Controller
             }
         }*/
         //dd($xml_arr);
+        //账号绑定
+        if($xml_arr['MsgType']=='event' && $xml_arr['Event'] == 'CLICK')
+        {
+            $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->tools->get_wechat_access_token().'&openid='.$xml_arr['FromUserName'].'&lang=zh_CN';
+            $res = file_get_contents($url);
+            $result = json_decode($res,1);
+            $openid = $result['openid'];
+            return redirect('admin/bang');
+        }
         //事件入库
         if($xml_arr['MsgType']=='text'){
             //入库
@@ -141,16 +150,16 @@ class EventController extends Controller
 
         }
         //CLICK事件发送消息
-        if($xml_arr['MsgType']=='event' && $xml_arr['Event'] == 'CLICK'){
-            //openid拿到用户基本信息
-            $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->tools->get_wechat_access_token().'&openid='.$xml_arr['FromUserName'].'&lang=zh_CN';
-            $res = file_get_contents($url);
-            $result = json_decode($res,1);
-            //dd($result);
-            $message='Hello'.$result['nickname'];
-            $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
-            echo $xml_str;
-        }
+//        if($xml_arr['MsgType']=='event' && $xml_arr['Event'] == 'CLICK'){
+//            //openid拿到用户基本信息
+//            $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->tools->get_wechat_access_token().'&openid='.$xml_arr['FromUserName'].'&lang=zh_CN';
+//            $res = file_get_contents($url);
+//            $result = json_decode($res,1);
+//            //dd($result);
+//            $message='Hello'.$result['nickname'];
+//            $xml_str='<xml><ToUserName><![CDATA['.$xml_arr['FromUserName'].']]></ToUserName><FromUserName><![CDATA['.$xml_arr['ToUserName'].']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['.$message.']]></Content></xml>';
+//            echo $xml_str;
+//        }
         //关注逻辑
         if($xml_arr['MsgType']=='event' && $xml_arr['Event']=='subscribe'){
             //关注
