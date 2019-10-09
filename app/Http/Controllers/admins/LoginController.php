@@ -19,7 +19,7 @@ class LoginController extends Controller
     {
         //二维码识别后的唯一标识
         $id = time().rand(1000,9999);//生成一个 不重复的随机数
-        $redirect_url = "http://www.jmm_wxlaravel.com/admin/mobileScan?id=".$id;//跳转地址
+        $redirect_url = "http://www.jiamengmeng.cn/admin/mobileScan?id=".$id;//跳转地址
         return view('login/wechat',[
         'redirect_url'=>$redirect_url,
             'id'=>$id,
