@@ -14,6 +14,28 @@ class LoginController extends Controller
     {
         $this->tools = $tools;
     }
+    //扫码登录
+    public function wechat()
+    {
+        //二维码识别后的唯一标识
+        $id = time().rand(1000,9999);//生成一个 不重复的随机数
+        $redirect_url = "http://www.jmm_wxlaravel.com/admin/mobileScan?id=".$id;//跳转地址
+        return view('login/wechat',[
+        'redirect_url'=>$redirect_url,
+            'id'=>$id,
+        ]);
+    }
+    //扫码登录跳转页面
+    public function mobileScan()
+    {
+        //接受二维码唯一标识
+        $id = Request()->all();
+        //通过网页授权获取openID
+        $openid = Tools::getOpenid();
+        //进行储存
+        Cache::put('LoginController_'.$id,$openid,10);
+        return '扫码登录成功,请稍等';
+    }
     //登录页面
     public function login()
     {
@@ -60,12 +82,13 @@ class LoginController extends Controller
         //接受用户名 密码
         $data = Request()->all();
         //查询表
-        $req = DB::table('logins')->where(['username' => $data['username'], 'pwd' => $data['pwd']])->first();
-        if (empty($req)) {
+        $req = DB::table('logins')->where(['username'=>$data['username'],'pwd'=>$data['pwd']])->first();
+        if(empty($req)) {
             dd('用户名或密码不存在');
         }
         $resData = get_object_vars($req);
         $openid = $resData['openid'];
+        //dd($openid);
         $code = rand(1000, 9999);
         //储存验证码
         $this->tools->redis->set('code',$code);

@@ -288,7 +288,8 @@ Route::get('admin/login','admins\LoginController@login');//登录
 Route::any('admin/login_do','admins\LoginController@login_do');//登录
 Route::any('admin/bang','admins\LoginController@bang');//登录绑定账号
 Route::any('admin/bang_do','admins\LoginController@bang_do');//登录绑定账号
-
+Route::any('admin/wechat','admins\LoginController@wechat');//扫码登录
+Route::any('admin/mobileScan','admins\LoginController@mobileScan');
 Route::any('admin/send','admins\LoginController@send');//登录点击按钮发送模板消息
 
 Route::any('admin/index','admins\IndexController@index');//后台首页

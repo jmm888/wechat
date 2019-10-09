@@ -45,6 +45,7 @@
                 <input type="text" class="form-control" name="code" placeholder="点击获取验证码" required="">
                 <input type="button" class="send" value="点击获取验证码">
             </div>
+            <a href="{{url('admin/wechat')}}">点击进行扫码登录</a>
             <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
            <h4>扫描进行绑定账号</h4>
             <img src="{{asset('/hadmin/0 (1).jpg')}}" alt="" height="200" width="200">
