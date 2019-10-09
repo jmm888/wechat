@@ -33,7 +33,7 @@ class LoginController extends Controller
         //通过网页授权获取openID
         $openid = Tools::getOpenid();
         //进行储存
-        Cache::put('LoginController_'.$id,$openid,10);
+        $this->tools->set('wechatlogin_'.$id,$openid,10);
         return '扫码登录成功,请稍等';
     }
     //登录页面
