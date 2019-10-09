@@ -29,7 +29,7 @@ class LoginController extends Controller
     public function mobileScan()
     {
         //接受二维码唯一标识
-        $id = Request()->all();
+        $id = Request()->id;
         //通过网页授权获取openID
         $openid = Tools::getOpenid();
         //进行储存
