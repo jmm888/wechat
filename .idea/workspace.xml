@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd335970-16e0-47b3-b8d3-bff9b60a4433" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/test/add.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/test/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/test/update.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admins/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admins/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login/wechat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/wechat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +198,9 @@
       <workItem from="1569630610653" duration="9258000" />
       <workItem from="1570409082824" duration="21709000" />
       <workItem from="1570496981012" duration="15818000" />
-      <workItem from="1570585072064" duration="11352000" />
+      <workItem from="1570585072064" duration="14238000" />
+      <workItem from="1570674559295" duration="15211000" />
+      <workItem from="1570705528353" duration="4566000" />
     </task>
     <servers />
   </component>

@@ -36,6 +36,21 @@ class LoginController extends Controller
         $this->tools->redis->set('wechatlogin_'.$id,$openid,10);
         return '扫码登录成功,请稍等';
     }
+    //
+    public function checkwechatlogin()
+    {
+        //接受二维码标识
+        $id = Request()->id;
+        $openid = $this->tools->redis->get('wechatlogin_'.$id);//从redis里取出
+        if(!$openid)
+        {
+            //抛错
+            return json_encode(['ret'=>0,'msg'=>'用户未扫码']);
+        }
+        //登录成功储存session
+        session(['admininfo'=>$openid]);
+        return json_encode(['ret'=>1,'msg'=>'用户已扫码']);
+    }
     //登录页面
     public function login()
     {

@@ -20,5 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        //关闭s所有api为前缀的 csrf
+        '/api/*',
     ];
 }

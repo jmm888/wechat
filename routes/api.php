@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 });
 Route::any('event','wechat\EventController@event' );//接受微信发送过来的消息
+//10.10接口
+

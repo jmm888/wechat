@@ -291,6 +291,22 @@ Route::any('admin/bang_do','admins\LoginController@bang_do');//登录绑定账�
 Route::any('admin/wechat','admins\LoginController@wechat');//扫码登录
 Route::any('admin/mobileScan','admins\LoginController@mobileScan');
 Route::any('admin/send','admins\LoginController@send');//登录点击按钮发送模板消息
+Route::any('admin/checkwechatlogin','admins\LoginController@checkwechatlogin');
 
 Route::any('admin/index','admins\IndexController@index');//后台首页
-
+//10.10接口
+//返回试图
+Route::get('/test/add', function () {
+    return view('test/add');
+});//添加页面
+Route::get('/test/show', function () {
+    return view('test/show');
+});//展示页面
+Route::get('/test/update', function () {
+    return view('test/update');
+});//修改页面
+Route::any('/api/test/add','Api\TestController@add');//接口添加
+Route::any('/api/test/show','Api\TestController@show');//展示
+Route::any('/api/test/find','Api\TestController@find');//修改获取值
+Route::any('/api/test/upl','Api\TestController@upl');//修改执行
+Route::any('/api/test/del','Api\TestController@del');//修改执行
