@@ -292,8 +292,32 @@ Route::any('admin/wechat','admins\LoginController@wechat');//扫码登录
 Route::any('admin/mobileScan','admins\LoginController@mobileScan');
 Route::any('admin/send','admins\LoginController@send');//登录点击按钮发送模板消息
 Route::any('admin/checkwechatlogin','admins\LoginController@checkwechatlogin');
-
 Route::any('admin/index','admins\IndexController@index');//后台首页
+//10.15后台项目
+Route::any('admin/category_add','admins\IndexController@category_add');//后台分类添加
+Route::any('admin/cate_do','admins\IndexController@cate_do');//后台分类添加执行
+Route::any('admin/Only','admins\IndexController@Only');//后台分类添加唯一性验证
+
+Route::any('admin/category_list','admins\IndexController@category_list');//后台分类列表
+Route::any('admin/type_add','admins\IndexController@type_add');//后台类型添加
+Route::any('admin/type_do','admins\IndexController@type_do');//后台类型添加
+Route::any('admin/type_list','admins\IndexController@type_list');//后台类型列表
+Route::any('admin/attribute_add','admins\IndexController@attribute_add');//后台属性模块添加
+Route::any('admin/attr_do','admins\IndexController@attr_do');//后台属性模块添加执行
+Route::any('admin/del','admins\IndexController@del');//后台属性模块批量删除
+Route::any('admin/attribute_list','admins\IndexController@attribute_list');//后台属性模块添加执行
+Route::any('admin/attrData','admins\IndexController@attrData');//后台根据类型id获取属性
+
+Route::any('admin/comm_add','admins\IndexController@comm_add');//后台商品添加
+Route::any('admin/add','admins\IndexController@add');//后台商品添加执行页面
+Route::any('admin/comm_list','admins\IndexController@comm_list');//后台商品列表
+Route::any('admin/clickhere','admins\IndexController@clickhere');//后台商品列表商品名即点击该
+
+Route::any('admin/goods','admins\IndexController@goods');//后台货品添加
+Route::any('admin/product_do','admins\IndexController@product_do');//后台货品添加执行页面
+
+
+
 //10.10接口
 //返回试图
 Route::get('/test/add', function () {
@@ -310,3 +334,40 @@ Route::any('/api/test/show','Api\TestController@show');//展示
 Route::any('/api/test/find','Api\TestController@find');//修改获取值
 Route::any('/api/test/upl','Api\TestController@upl');//修改执行
 Route::any('/api/test/del','Api\TestController@del');//修改执行
+Route::any('/api/test/send','Api\TestController@send');//修改执行
+
+Route::any('/api/test/weather','Api\TestController@weather');//10.14测试天气接口
+
+
+//10.11
+Route::resource('/api/usr','PostController');
+//10.14测试
+Route::resource('/api/test','test\TestController');
+Route::get('/good/add', function () {
+    return view('good/add');
+});//添加
+Route::get('/good/index', function () {
+    return view('good/index');
+});//展示
+
+Route::get('/day/weather', function () {
+    return view('good/weather');
+});
+//10.21前台项目
+Route::prefix('api')->middleware('apiheader')->group(function () {
+
+    Route::any('index/login','admins\UserController@login');//前台登录
+    Route::any('index/getUser','admins\UserController@getUser');//前台登录验证token
+    Route::get('index/news','admins\AdminController@news');//新品展示
+    Route::get('index/detail','admins\AdminController@detail');//商品详情
+    Route::any('index/listing','admins\AdminController@listing');//商品列表
+    Route::any('index/cate','admins\AdminController@cate');//商品分类查询
+    //验证token中间件
+    Route::middleware('apitoken')->group(function(){
+        Route::any('index/shopping','admins\AdminController@shopping');//商品前台加入购物车
+        Route::any('index/cart_list','admins\AdminController@cart_list');//商品前台购物车列表
+    });
+});
+    Route::any('api/sign','admins\AdminController@sign');//前台登录
+
+

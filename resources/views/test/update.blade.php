@@ -22,9 +22,10 @@
             if(r!=null)return  unescape(r[2]); return null;
         }
         var id = getQueryString("id");
+        var url = 'http://www.jmm_wxlaravel.com/api/usr';
         $.ajax({
-            url:'http://www.jmm_wxlaravel.com/api/test/find',
-            data:{id:id},
+            url:url+"/"+id,
+            type:"GET",
             dataType:'json',
             success:function(res){
                 var name = $('[name="name"]').val(res.data.test_name);
@@ -35,8 +36,9 @@
            var name = $('[name="name"]').val();
             var age = $('[name="age"]').val();
             $.ajax({
-                url:'http://www.jmm_wxlaravel.com/api/test/upl',
-                data:{name:name,age:age,id:id},
+                url:url+'/'+id,
+                type:"POST",
+                data:{name:name,age:age,'_method':'PUT'},
                 dataType:'json',
                 success:function(res)
                 {
