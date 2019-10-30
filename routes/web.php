@@ -355,7 +355,6 @@ Route::get('/day/weather', function () {
 });
 //10.21前台项目
 Route::prefix('api')->middleware('apiheader')->group(function () {
-
     Route::any('index/login','admins\UserController@login');//前台登录
     Route::any('index/getUser','admins\UserController@getUser');//前台登录验证token
     Route::get('index/news','admins\AdminController@news');//新品展示
@@ -368,6 +367,25 @@ Route::prefix('api')->middleware('apiheader')->group(function () {
         Route::any('index/cart_list','admins\AdminController@cart_list');//商品前台购物车列表
     });
 });
+    //sign加密  10.25
     Route::any('api/sign','admins\AdminController@sign');//前台登录
-
+   //10.26数据处理测试练习
+    Route::any('api/class_show','admins\UserController@class_show');
+    Route::any('api/stu_show','admins\UserController@stu_show');
+    Route::any('api/aes','admins\UserController@aes');//10.28练习对称加密
+    Route::any('api/rsa','admins\UserController@rsa');//10.28练习对称加密
+//10.29测试
+    Route::any('api/news','admins\TestController@news');//10.29获取时事新闻
+    Route::get('/api/regist', function () {
+        return view('login/register');
+    });//注册
+    Route::get('/api/login', function () {
+    return view('login/logins');
+    });//登录
+    Route::get('/api/new_show', function () {
+        return view('login/new_show');
+    });//列表
+    Route::any('api/register','admins\TestController@register');//10.29注册执行页面
+    Route::any('api/login_do','admins\TestController@login_do');//10.29登录页面
+    Route::any('show','admins\TestController@show');//10.29列表页面
 

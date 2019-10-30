@@ -58,6 +58,27 @@ class TestController extends Controller
             return json_encode(['ret'=>0,'msg'=>'异常']);
         }
     }
+    public function addww(Request $request)
+    {
+        //接受数据
+        $name = $request->input('name');
+        $age = $request->input('age');
+        if(empty($name)|| empty($age))
+        {
+            return json_encode(['ret'=>3,'msg'=>'参数不能为空']);
+        }
+        //接口添加入库
+        $res = DB::table('test')->insert([
+            'test_name'=>$name,
+            'test_age'=>$age,
+        ]);
+        if($res)
+        {
+            return json_encode(['ret'=>1,'msg'=>'添加成功']);
+        }else{
+            return json_encode(['ret'=>0,'msg'=>'异常']);
+        }
+    }
     //接口展示
     public function show()
     {

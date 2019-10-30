@@ -5,8 +5,84 @@ namespace App\Http\Controllers\admins;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Login;
+use App\Model\ClassModel;
+use App\Model\Stu;
+use App\Tools\Aes;
+use App\Tools\Rsa;
+use function App\Tools\p;
+
 class UserController extends Controller
 {
+    //10.28练习对称加密
+    public function aes()
+    {
+        $obj = new Aes('1234567890123456');
+        $data = "相信自己是最没用的";
+        echo $eStr = $obj->encrypt($data);  //加密后的密文
+        echo "<hr>";
+        echo $obj->decrypt($eStr);
+    }
+//    //10.28非对称加密
+//    public function rsa()
+//    {
+//        //举个粒子
+//        $Rsa = new Rsa();
+//        $keys = $Rsa->new_rsa_key(); //生成完key之后应该记录下key值，这里省略
+//        p($keys);
+//        die;
+//        $privkey = file_get_contents("cert_private.pem");//$keys['privkey'];
+//        $pubkey = file_get_contents("cert_public.pem");//$keys['pubkey'];
+//        //echo $privkey;die;
+//        //初始化rsaobject
+//        $Rsa->init($privkey, $pubkey, TRUE);
+//        //原文
+//        $data = '学习PHP太开心了';
+//        //私钥加密示例
+//        $encode = $Rsa->priv_encode($data);
+//        p($encode);
+//        $ret = $Rsa->pub_decode($encode);
+//        p($ret);
+//
+//        //公钥加密示例
+//        $encode = $Rsa->pub_encode($data);
+//
+//        p($encode);
+//        $ret = $Rsa->priv_decode($encode);
+//        p($ret);
+//        function p($str)
+//        {
+//            echo '<pre>';
+//            print_r($str);
+//            echo '</pre>';
+//        }
+//    }
+    /*
+        * 10.26练习处理数据
+        * */
+    public function class_show(Request $request)
+    {
+        //查询班级表
+        $classData = ClassModel::get()->toArray();
+        foreach($classData as $k=>$v)
+        {
+            //查询学生表里的classid等于循环里的class_id 获得个数
+            $stunum = Stu::where(['class_id'=>$v['class_id']])->count();
+            $classData[$k]['stucount'] = $stunum;
+        }
+        return view('stud/class_show',['classData'=>$classData]);
+    }
+    public function stu_show(Request $request)
+    {
+        //查询班级表
+     $classData = ClassModel::get()->toArray();
+     foreach($classData as $key=>$val)
+     {
+        $stuData = Stu::where(['class_id'=>$val['class_id']])->get()->toArray();
+         $classData[$key]['stu_list'] = $stuData;
+     }
+        //dd($classData);
+        return view('stud/class_list',['classData'=>$classData]);
+    }
     /**
      * 用户登录接口
      */

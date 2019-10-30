@@ -30,7 +30,7 @@ class Api
         {
             $num = 0;
         }
-        if($num >100)
+        if($num >10)
         {
             //ip记录到文件 服务器端配置屏蔽某个ip
             echo json_encode([
