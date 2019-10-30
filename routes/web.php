@@ -329,14 +329,14 @@ Route::get('/test/show', function () {
 Route::get('/test/update', function () {
     return view('test/update');
 });//修改页面
-Route::any('/api/test/add','Api\TestController@add');//接口添加
-Route::any('/api/test/show','Api\TestController@show');//展示
-Route::any('/api/test/find','Api\TestController@find');//修改获取值
-Route::any('/api/test/upl','Api\TestController@upl');//修改执行
-Route::any('/api/test/del','Api\TestController@del');//修改执行
-Route::any('/api/test/send','Api\TestController@send');//修改执行
+Route::any('/api/test/add','Api\TesterController@add');//接口添加
+Route::any('/api/test/show','Api\TesterController@show');//展示
+Route::any('/api/test/find','Api\TesterController@find');//修改获取值
+Route::any('/api/test/upl','Api\TesterController@upl');//修改执行
+Route::any('/api/test/del','Api\TesterController@del');//修改执行
+Route::any('/api/test/send','Api\TesterController@send');//修改执行
 
-Route::any('/api/test/weather','Api\TestController@weather');//10.14测试天气接口
+Route::any('/api/test/weather','Api\TesterController@weather');//10.14测试天气接口
 
 
 //10.11

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Cache;
-class TestController extends Controller
+class TesterController extends Controller
 {
     //测试天气
     public function weather(Request $request)
@@ -38,27 +38,6 @@ class TestController extends Controller
 
     //模拟添加
     public function add(Request $request)
-    {
-        //接受数据
-        $name = $request->input('name');
-        $age = $request->input('age');
-        if(empty($name)|| empty($age))
-        {
-            return json_encode(['ret'=>3,'msg'=>'参数不能为空']);
-        }
-        //接口添加入库
-        $res = DB::table('test')->insert([
-            'test_name'=>$name,
-            'test_age'=>$age,
-        ]);
-        if($res)
-        {
-            return json_encode(['ret'=>1,'msg'=>'添加成功']);
-        }else{
-            return json_encode(['ret'=>0,'msg'=>'异常']);
-        }
-    }
-    public function addww(Request $request)
     {
         //接受数据
         $name = $request->input('name');
