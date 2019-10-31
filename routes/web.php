@@ -355,6 +355,7 @@ Route::get('/day/weather', function () {
 });
 //10.21前台项目
 Route::prefix('api')->middleware('apiheader')->group(function () {
+    Route::any('news_show','Api\UserController@news_show');//10.31读取数据接口
     Route::any('index/login','admins\UserController@login');//前台登录
     Route::any('index/getUser','admins\UserController@getUser');//前台登录验证token
     Route::get('index/news','admins\AdminController@news');//新品展示
@@ -388,4 +389,18 @@ Route::prefix('api')->middleware('apiheader')->group(function () {
     Route::any('api/register','admins\TestController@register');//10.29注册执行页面
     Route::any('api/login_do','admins\TestController@login_do');//10.29登录页面
     Route::any('show','admins\TestController@show');//10.29列表页面
+    //10.30练习技能A卷
+    Route::any('api/regist','admins\WechatController@regist');//10.30注册页面
+    Route::any('api/regist_do','admins\WechatController@regist_do');//10.30注册执行页面
+    Route::any('api/login','admins\WechatController@login');//10.30登录页面
+    Route::any('api/login_do','admins\WechatController@login_do');//10.30登录执行页面
+    Route::any('api/wechat','admins\WechatController@wechat');//10.30设置域名页面
+    Route::any('api/wechat_do','admins\WechatController@wechat_do');//10.30设置域名页面
+    //10.31 考试
+    Route::get('/api/news_list', function () {
+        return view('login/news_list');
+    });//列表
+    Route::any('api/user_news','Api\UserController@news');//10.31考试获取最新新闻
+
+
 

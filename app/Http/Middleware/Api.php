@@ -20,7 +20,6 @@ class Api
         header('Access-Control-Allow-Methods:POST');
         header('Access-Control-Allow-Headers:x-requested-with, content-type');
 
-
         //根据IP做防刷
         $ip = $_SERVER['REMOTE_ADDR'];//获取ip
 //        dd($ip);
@@ -30,7 +29,7 @@ class Api
         {
             $num = 0;
         }
-        if($num >10)
+        if($num >5)
         {
             //ip记录到文件 服务器端配置屏蔽某个ip
             echo json_encode([
